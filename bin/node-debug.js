@@ -33,7 +33,7 @@ var config;
  * or when an error occured.
  */
 function main() {
-  config = createConfig(process.argv.slice(2));
+  config = module.exports.createConfig(process.argv.slice(2));
 
   if (config.options.help) {
     config.options.showHelp(NODE_DEBUG_MODE);
