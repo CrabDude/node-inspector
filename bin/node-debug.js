@@ -165,12 +165,16 @@ function startDebuggedProcess(callback) {
     }
   }
 
+  var options = {
+    execArgv: config.subproc.execArgs
+  };
+  if (config.subproc.execPath) {
+    options.execPath = config.subproc.execPath
+  }
   var debuggedProcess = fork(
     script,
     config.subproc.args,
-    {
-      execArgv: config.subproc.execArgs
-    }
+    options
   );
   debuggedProcess.on('exit', function() { process.exit(); });
   callback();
